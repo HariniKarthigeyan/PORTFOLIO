@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <style>
+    /* --- CSS RESET & BASE VARIABLES --- */
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* --- NAVIGATION --- */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-main);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* --- LAYOUT CONTAINER --- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f172a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* --- SKILLS SECTION --- */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    /* --- PROJECTS SECTION --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    /* --- CONTACT SECTION --- */
+    .contact-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-logo">MyPortfolio</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <!-- Hero / Intro -->
+    <header id="about" class="hero">
+      <span class="hero-tag">Student / Developer</span>
+      <h1>Hello, I'm <span style="color: var(--accent);">Harini Karthigeyan</span></h1>
+      <p>
+        I am a student passionate about building clean, functional software and web applications. Welcome to my personal portfolio.
+      </p>
+      <a href="#contact" class="cta-btn">Get In Touch</a>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">HTML & CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Git & GitHub</span>
+        <span class="skill-tag">Data Structures</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div>
+            <h3>Project One</h3>
+            <div class="project-tags">HTML • CSS • JavaScript</div>
+            <p>A web application built to solve a specific problem. Describe the core purpose and what challenges you overcame.</p>
+          </div>
+          <a href="#" target="_blank">View Project &rarr;</a>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div>
+            <h3>Project Two</h3>
+            <div class="project-tags">Python • SQLite</div>
+            <p>A backend system or script that automates tasks and handles structured data efficiently.</p>
+          </div>
+          <a href="#" target="_blank">View Project &rarr;</a>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div>
+            <h3>Project Three</h3>
+            <div class="project-tags">Design • UI/UX</div>
+            <p>A design prototype or interactive application focusing on modern accessibility and user interface standards.</p>
+          </div>
+          <a href="#" target="_blank">View Project &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-box">
+        <p>Feel free to reach out for project collaborations or academic inquiries.</p>
+        <div class="contact-links">
+          <a href="mailto:harini.karthigeyan2026@vitstudent.ac.in">harini.karthigeyan2026@vitstudent.ac.in</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 [Your Name]. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
